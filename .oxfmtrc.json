@@ -1,0 +1,18 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "printWidth": 110,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "all",
+    "ignorePatterns": [
+        "vendor/**",
+        "public/**",
+        "node_modules/**",
+        "storage/**",
+        "resources/js/routes/**",
+        "resources/js/actions/**",
+        "resources/js/wayfinder/**",
+        "resources/js/types/generated.d.ts"
+    ]
+}

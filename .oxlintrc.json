@@ -1,0 +1,32 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "react", "import", "unicorn", "oxc", "jsx-a11y"],
+    "categories": {
+        "correctness": "error",
+        "suspicious": "warn",
+        "perf": "warn"
+    },
+    "env": { "browser": true, "es2022": true },
+    "rules": {
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+        "typescript/no-explicit-any": "error",
+        "typescript/consistent-type-imports": "error",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-key": "error",
+        "react/exhaustive-deps": "warn",
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "eqeqeq": "error",
+        "unicorn/require-module-specifiers": "off",
+        "react/no-unstable-nested-components": "off"
+    },
+    "ignorePatterns": [
+        "vendor/**",
+        "public/**",
+        "node_modules/**",
+        "storage/**",
+        "resources/js/routes/**",
+        "resources/js/actions/**",
+        "resources/js/wayfinder/**",
+        "resources/js/types/generated.d.ts"
+    ]
+}
