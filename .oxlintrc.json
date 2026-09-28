@@ -6,15 +6,29 @@
         "suspicious": "warn",
         "perf": "warn"
     },
-    "env": { "browser": true, "es2022": true },
+    "env": {
+        "browser": true,
+        "es2022": true
+    },
     "rules": {
-        "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
         "typescript/no-explicit-any": "error",
         "typescript/consistent-type-imports": "error",
         "react/react-in-jsx-scope": "off",
         "react/jsx-key": "error",
         "react/exhaustive-deps": "warn",
-        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "no-console": [
+            "warn",
+            {
+                "allow": ["warn", "error"]
+            }
+        ],
         "eqeqeq": "error",
         "unicorn/require-module-specifiers": "off",
         "react/no-unstable-nested-components": "off"
@@ -28,5 +42,13 @@
         "resources/js/actions/**",
         "resources/js/wayfinder/**",
         "resources/js/types/generated.d.ts"
+    ],
+    "overrides": [
+        {
+            "files": ["scripts/**"],
+            "rules": {
+                "no-console": "off"
+            }
+        }
     ]
 }

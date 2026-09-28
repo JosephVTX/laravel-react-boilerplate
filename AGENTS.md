@@ -180,7 +180,7 @@ Alias `@/` = `resources/js/`. Imports con `@/...`.
 ## Comandos
 
 `pnpm dev` | `pnpm build` | `pnpm typecheck` (tsc) | `pnpm lint` (**oxlint**, no eslint) | `pnpm format` (oxfmt) | `pnpm types:generate` | `pnpm check`.
-Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y `pnpm test:e2e` si tocaste flujos de UI).
+Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y ejecuta los escenarios de `e2e/SCENARIOS.md` con el MCP si tocaste flujos de UI).
 
 === .ai/04-bajos-recursos rules ===
 
@@ -197,6 +197,28 @@ Todo cambio debe respetar que esto corre en VPS de 512 MB - 1 GB de RAM y 1 vCPU
 - **Logs**: `LOG_LEVEL=warning` en produccion; `LOG_STACK=daily` con rotacion corta si el disco es chico.
 - **Dependencias**: antes de agregar un paquete (composer/pnpm) verifica que no exista ya una pieza generica en el proyecto y evalua su costo en RAM/bundle.
 - Despliegue: `docs/DEPLOY.md` y `deploy.sh`.
+
+=== .ai/05-e2e-mcp rules ===
+
+# E2E con el MCP de Chrome DevTools (no hay Playwright)
+
+Las pruebas de navegador las ejecuta la IA **conduciendo el navegador real del usuario (Brave/Edge) mediante el MCP `chrome-devtools`** (`.mcp.json`).
+Los escenarios estan en `e2e/SCENARIOS.md`: es la fuente de verdad de los flujos de UI.
+
+## Como correrlos
+
+1. `pnpm e2e:server` -> compila, recrea la BD aislada `laravel_boilerplate_e2e` y sirve en `http://127.0.0.1:8123`.
+2. `pnpm e2e:browser` -> abre Brave (o `BROWSER=edge`) con `--remote-debugging-port=9333` y un perfil aislado.
+3. Ejecuta los escenarios de `e2e/SCENARIOS.md` con las herramientas del MCP (`take_snapshot`, `click`, `fill`, `wait_for`, `list_console_messages`, `list_network_requests`...) y reporta `escenario | OK/FALLO | detalle`.
+
+## Reglas
+
+- Un flujo de UI nuevo o modificado **agrega/actualiza su escenario en `e2e/SCENARIOS.md`** en el mismo cambio.
+- **Todas las herramientas del MCP exigen `pageId`** (obtenlo con `list_pages`). Los `uid` de `take_snapshot` caducan al navegar: toma un snapshot nuevo antes de cada interaccion.
+- Un escenario solo es OK si no hay errores de consola ni respuestas 5xx.
+- Usa `take_snapshot` (texto/a11y) antes de cada interaccion; usa capturas solo para diagnosticar fallos.
+- Nunca apuntes el MCP a un perfil con sesiones reales del usuario: usa el perfil aislado que crea `pnpm e2e:browser`.
+- Los tests de backend (PHPUnit, `php artisan test`) siguen siendo obligatorios y automaticos; el E2E por MCP es la verificacion de UI.
 
 === foundation rules ===
 

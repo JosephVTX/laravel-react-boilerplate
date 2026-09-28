@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\CrudController::index
  * @see app/Http/Controllers/CrudController.php:21
@@ -45,41 +45,6 @@ index6e8299a085c11017e62ab420951fb27c.head = (options?: RouteQueryOptions): Rout
     /**
 * @see \App\Http\Controllers\CrudController::index
  * @see app/Http/Controllers/CrudController.php:21
- * @route '/users'
- */
-    const index6e8299a085c11017e62ab420951fb27cForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index6e8299a085c11017e62ab420951fb27c.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
- * @route '/users'
- */
-        index6e8299a085c11017e62ab420951fb27cForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index6e8299a085c11017e62ab420951fb27c.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
- * @route '/users'
- */
-        index6e8299a085c11017e62ab420951fb27cForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index6e8299a085c11017e62ab420951fb27c.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    index6e8299a085c11017e62ab420951fb27c.form = index6e8299a085c11017e62ab420951fb27cForm
-    /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
  * @route '/roles'
  */
 const indexbe1fddd12d9a311af0360a2f8bcfa1e2 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -119,42 +84,6 @@ indexbe1fddd12d9a311af0360a2f8bcfa1e2.head = (options?: RouteQueryOptions): Rout
     url: indexbe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
     method: 'head',
 })
-
-    /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
- * @route '/roles'
- */
-    const indexbe1fddd12d9a311af0360a2f8bcfa1e2Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: indexbe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
- * @route '/roles'
- */
-        indexbe1fddd12d9a311af0360a2f8bcfa1e2Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: indexbe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\CrudController::index
- * @see app/Http/Controllers/CrudController.php:21
- * @route '/roles'
- */
-        indexbe1fddd12d9a311af0360a2f8bcfa1e2Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: indexbe1fddd12d9a311af0360a2f8bcfa1e2.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    indexbe1fddd12d9a311af0360a2f8bcfa1e2.form = indexbe1fddd12d9a311af0360a2f8bcfa1e2Form
 
 /**
 * Multiple routes resolve to \App\Http\Controllers\CrudController::index, so this export is a
@@ -203,27 +132,6 @@ store6e8299a085c11017e62ab420951fb27c.post = (options?: RouteQueryOptions): Rout
     /**
 * @see \App\Http\Controllers\CrudController::store
  * @see app/Http/Controllers/CrudController.php:36
- * @route '/users'
- */
-    const store6e8299a085c11017e62ab420951fb27cForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: store6e8299a085c11017e62ab420951fb27c.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::store
- * @see app/Http/Controllers/CrudController.php:36
- * @route '/users'
- */
-        store6e8299a085c11017e62ab420951fb27cForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: store6e8299a085c11017e62ab420951fb27c.url(options),
-            method: 'post',
-        })
-    
-    store6e8299a085c11017e62ab420951fb27c.form = store6e8299a085c11017e62ab420951fb27cForm
-    /**
-* @see \App\Http\Controllers\CrudController::store
- * @see app/Http/Controllers/CrudController.php:36
  * @route '/roles'
  */
 const storebe1fddd12d9a311af0360a2f8bcfa1e2 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -254,28 +162,6 @@ storebe1fddd12d9a311af0360a2f8bcfa1e2.post = (options?: RouteQueryOptions): Rout
     url: storebe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
     method: 'post',
 })
-
-    /**
-* @see \App\Http\Controllers\CrudController::store
- * @see app/Http/Controllers/CrudController.php:36
- * @route '/roles'
- */
-    const storebe1fddd12d9a311af0360a2f8bcfa1e2Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: storebe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::store
- * @see app/Http/Controllers/CrudController.php:36
- * @route '/roles'
- */
-        storebe1fddd12d9a311af0360a2f8bcfa1e2Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: storebe1fddd12d9a311af0360a2f8bcfa1e2.url(options),
-            method: 'post',
-        })
-    
-    storebe1fddd12d9a311af0360a2f8bcfa1e2.form = storebe1fddd12d9a311af0360a2f8bcfa1e2Form
 
 /**
 * Multiple routes resolve to \App\Http\Controllers\CrudController::store, so this export is a
@@ -343,37 +229,6 @@ update3d7aae258ed911ef8bd3b1d2fc6768ef.put = (args: { id: string | number } | [i
     /**
 * @see \App\Http\Controllers\CrudController::update
  * @see app/Http/Controllers/CrudController.php:44
- * @route '/users/{id}'
- */
-    const update3d7aae258ed911ef8bd3b1d2fc6768efForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: update3d7aae258ed911ef8bd3b1d2fc6768ef.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'PUT',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::update
- * @see app/Http/Controllers/CrudController.php:44
- * @route '/users/{id}'
- */
-        update3d7aae258ed911ef8bd3b1d2fc6768efForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: update3d7aae258ed911ef8bd3b1d2fc6768ef.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'PUT',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    update3d7aae258ed911ef8bd3b1d2fc6768ef.form = update3d7aae258ed911ef8bd3b1d2fc6768efForm
-    /**
-* @see \App\Http\Controllers\CrudController::update
- * @see app/Http/Controllers/CrudController.php:44
  * @route '/roles/{id}'
  */
 const updated50f4f721441f9bd72e364db092999ff = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -423,38 +278,6 @@ updated50f4f721441f9bd72e364db092999ff.put = (args: { id: string | number } | [i
     url: updated50f4f721441f9bd72e364db092999ff.url(args, options),
     method: 'put',
 })
-
-    /**
-* @see \App\Http\Controllers\CrudController::update
- * @see app/Http/Controllers/CrudController.php:44
- * @route '/roles/{id}'
- */
-    const updated50f4f721441f9bd72e364db092999ffForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: updated50f4f721441f9bd72e364db092999ff.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'PUT',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::update
- * @see app/Http/Controllers/CrudController.php:44
- * @route '/roles/{id}'
- */
-        updated50f4f721441f9bd72e364db092999ffForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: updated50f4f721441f9bd72e364db092999ff.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'PUT',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    updated50f4f721441f9bd72e364db092999ff.form = updated50f4f721441f9bd72e364db092999ffForm
 
 /**
 * Multiple routes resolve to \App\Http\Controllers\CrudController::update, so this export is a
@@ -522,37 +345,6 @@ destroy3d7aae258ed911ef8bd3b1d2fc6768ef.delete = (args: { id: string | number } 
     /**
 * @see \App\Http\Controllers\CrudController::destroy
  * @see app/Http/Controllers/CrudController.php:53
- * @route '/users/{id}'
- */
-    const destroy3d7aae258ed911ef8bd3b1d2fc6768efForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: destroy3d7aae258ed911ef8bd3b1d2fc6768ef.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'DELETE',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::destroy
- * @see app/Http/Controllers/CrudController.php:53
- * @route '/users/{id}'
- */
-        destroy3d7aae258ed911ef8bd3b1d2fc6768efForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: destroy3d7aae258ed911ef8bd3b1d2fc6768ef.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'DELETE',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    destroy3d7aae258ed911ef8bd3b1d2fc6768ef.form = destroy3d7aae258ed911ef8bd3b1d2fc6768efForm
-    /**
-* @see \App\Http\Controllers\CrudController::destroy
- * @see app/Http/Controllers/CrudController.php:53
  * @route '/roles/{id}'
  */
 const destroyd50f4f721441f9bd72e364db092999ff = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -602,38 +394,6 @@ destroyd50f4f721441f9bd72e364db092999ff.delete = (args: { id: string | number } 
     url: destroyd50f4f721441f9bd72e364db092999ff.url(args, options),
     method: 'delete',
 })
-
-    /**
-* @see \App\Http\Controllers\CrudController::destroy
- * @see app/Http/Controllers/CrudController.php:53
- * @route '/roles/{id}'
- */
-    const destroyd50f4f721441f9bd72e364db092999ffForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: destroyd50f4f721441f9bd72e364db092999ff.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'DELETE',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\CrudController::destroy
- * @see app/Http/Controllers/CrudController.php:53
- * @route '/roles/{id}'
- */
-        destroyd50f4f721441f9bd72e364db092999ffForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: destroyd50f4f721441f9bd72e364db092999ff.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'DELETE',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    destroyd50f4f721441f9bd72e364db092999ff.form = destroyd50f4f721441f9bd72e364db092999ffForm
 
 /**
 * Multiple routes resolve to \App\Http\Controllers\CrudController::destroy, so this export is a

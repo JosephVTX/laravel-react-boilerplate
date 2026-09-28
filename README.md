@@ -15,7 +15,7 @@ php artisan db:seed            # admin@example.com / password  (+ 20 usuarios de
 composer dev                   # servidor + vite (HMR)   |   o usa el vhost de Laragon + `pnpm dev`
 ```
 
-Comandos utiles: `pnpm types:generate` · `pnpm check` (tsc + oxlint) · `php artisan test` · `composer check` (Pint + PHPUnit + tsc + oxlint) · `pnpm test:e2e` (Playwright, BD `laravel_boilerplate_e2e` aislada; primero `pnpm exec playwright install chromium`).
+Comandos utiles: `pnpm types:generate` · `pnpm check` (tsc + oxlint) · `php artisan test` · `composer check` (Pint + PHPUnit + tsc + oxlint) · E2E de UI con el MCP de Chrome DevTools: ver `e2e/SCENARIOS.md`.
 
 ## La idea: tipado end-to-end (estilo tRPC)
 

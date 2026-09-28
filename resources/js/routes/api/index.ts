@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeController::__invoke
  * @see app/Http/Controllers/MeController.php:12
@@ -41,42 +41,6 @@ me.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: me.url(options),
     method: 'head',
 })
-
-    /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-    const meForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: me.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-        meForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: me.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-        meForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: me.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    me.form = meForm
 const api = {
     me: Object.assign(me, me),
 }

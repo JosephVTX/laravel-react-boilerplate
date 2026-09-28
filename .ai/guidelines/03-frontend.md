@@ -34,4 +34,4 @@ Alias `@/` = `resources/js/`. Imports con `@/...`.
 ## Comandos
 
 `pnpm dev` | `pnpm build` | `pnpm typecheck` (tsc) | `pnpm lint` (**oxlint**, no eslint) | `pnpm format` (oxfmt) | `pnpm types:generate` | `pnpm check`.
-Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y `pnpm test:e2e` si tocaste flujos de UI).
+Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y ejecuta los escenarios de `e2e/SCENARIOS.md` con el MCP si tocaste flujos de UI).

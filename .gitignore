@@ -29,5 +29,4 @@ Thumbs.db
 /.claude/settings.local.json
 /.phpunit.cache
 
-/test-results
-/playwright-report
+/.e2e-profile

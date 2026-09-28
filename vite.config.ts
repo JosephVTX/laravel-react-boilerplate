@@ -14,7 +14,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         // Regenera resources/js/routes y resources/js/actions al cambiar rutas/controladores.
-        wayfinder({ formVariants: true }),
+        wayfinder(),
     ],
     resolve: {
         alias: { '@': path.resolve(import.meta.dirname, 'resources/js') },

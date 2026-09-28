@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Auth\AuthController::showLogin
  * @see app/Http/Controllers/Auth/AuthController.php:17
@@ -42,41 +42,6 @@ showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-    /**
-* @see \App\Http\Controllers\Auth\AuthController::showLogin
- * @see app/Http/Controllers/Auth/AuthController.php:17
- * @route '/login'
- */
-    const showLoginForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: showLogin.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::showLogin
- * @see app/Http/Controllers/Auth/AuthController.php:17
- * @route '/login'
- */
-        showLoginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showLogin.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::showLogin
- * @see app/Http/Controllers/Auth/AuthController.php:17
- * @route '/login'
- */
-        showLoginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showLogin.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    showLogin.form = showLoginForm
 /**
 * @see \App\Http\Controllers\Auth\AuthController::login
  * @see app/Http/Controllers/Auth/AuthController.php:22
@@ -111,27 +76,6 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     method: 'post',
 })
 
-    /**
-* @see \App\Http\Controllers\Auth\AuthController::login
- * @see app/Http/Controllers/Auth/AuthController.php:22
- * @route '/login'
- */
-    const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: login.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::login
- * @see app/Http/Controllers/Auth/AuthController.php:22
- * @route '/login'
- */
-        loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: login.url(options),
-            method: 'post',
-        })
-    
-    login.form = loginForm
 /**
 * @see \App\Http\Controllers\Auth\AuthController::showRegister
  * @see app/Http/Controllers/Auth/AuthController.php:33
@@ -175,41 +119,6 @@ showRegister.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-    /**
-* @see \App\Http\Controllers\Auth\AuthController::showRegister
- * @see app/Http/Controllers/Auth/AuthController.php:33
- * @route '/register'
- */
-    const showRegisterForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: showRegister.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::showRegister
- * @see app/Http/Controllers/Auth/AuthController.php:33
- * @route '/register'
- */
-        showRegisterForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showRegister.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::showRegister
- * @see app/Http/Controllers/Auth/AuthController.php:33
- * @route '/register'
- */
-        showRegisterForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showRegister.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    showRegister.form = showRegisterForm
 /**
 * @see \App\Http\Controllers\Auth\AuthController::register
  * @see app/Http/Controllers/Auth/AuthController.php:40
@@ -244,27 +153,6 @@ register.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     method: 'post',
 })
 
-    /**
-* @see \App\Http\Controllers\Auth\AuthController::register
- * @see app/Http/Controllers/Auth/AuthController.php:40
- * @route '/register'
- */
-    const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: register.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::register
- * @see app/Http/Controllers/Auth/AuthController.php:40
- * @route '/register'
- */
-        registerForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: register.url(options),
-            method: 'post',
-        })
-    
-    register.form = registerForm
 /**
 * @see \App\Http\Controllers\Auth\AuthController::logout
  * @see app/Http/Controllers/Auth/AuthController.php:53
@@ -298,28 +186,6 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
     method: 'post',
 })
-
-    /**
-* @see \App\Http\Controllers\Auth\AuthController::logout
- * @see app/Http/Controllers/Auth/AuthController.php:53
- * @route '/logout'
- */
-    const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: logout.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\Auth\AuthController::logout
- * @see app/Http/Controllers/Auth/AuthController.php:53
- * @route '/logout'
- */
-        logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: logout.url(options),
-            method: 'post',
-        })
-    
-    logout.form = logoutForm
 const AuthController = { showLogin, login, showRegister, register, logout }
 
 export default AuthController

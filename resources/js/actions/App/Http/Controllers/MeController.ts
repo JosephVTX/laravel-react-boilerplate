@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeController::__invoke
  * @see app/Http/Controllers/MeController.php:12
@@ -41,40 +41,4 @@ MeController.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: MeController.url(options),
     method: 'head',
 })
-
-    /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-    const MeControllerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: MeController.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-        MeControllerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: MeController.url(options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\MeController::__invoke
- * @see app/Http/Controllers/MeController.php:12
- * @route '/api/me'
- */
-        MeControllerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: MeController.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    MeController.form = MeControllerForm
 export default MeController
