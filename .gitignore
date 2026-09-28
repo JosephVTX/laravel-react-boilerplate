@@ -30,3 +30,4 @@ Thumbs.db
 /.phpunit.cache
 
 /.e2e-profile
+/.claude/verify-state.json

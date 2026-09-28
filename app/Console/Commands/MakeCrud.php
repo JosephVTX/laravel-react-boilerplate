@@ -37,6 +37,7 @@ class MakeCrud extends Command
 
         $files->put($definition, $this->definitionStub($name, $label, $singular));
         $files->put($data, $this->dataStub($name));
+        $this->makeTest($files, $name, $slug);
         $this->register($files, $slug, $name);
 
         $this->components->info("Recurso '{$slug}' creado.");
@@ -45,7 +46,8 @@ class MakeCrud extends Command
         Siguientes pasos:
           1. Completar la migracion (database/migrations/*_create_{$slug}_table.php) y \$fillable en app/Models/{$name}.php
           2. Ajustar columns()/fields() en app/Crud/Definitions/{$name}Crud.php y las propiedades de app/Data/{$name}Data.php
-          3. php artisan migrate && php artisan crud:sync && pnpm types:generate
+          2b. Ajustar la factory y validPayload() de tests/Feature/Crud/{$name}CrudTest.php (test generico ya generado)
+          3. php artisan migrate && php artisan crud:sync && pnpm types:generate && php artisan test
           4. Listo: /{$slug} ya tiene listado, busqueda, orden, paginacion, crear, editar y eliminar con permisos.
         TXT);
 
@@ -62,6 +64,15 @@ class MakeCrud extends Command
             $files->get($model),
         ));
 
+        $factory = database_path("factories/{$name}Factory.php");
+        if ($files->exists($factory)) {
+            $files->put($factory, preg_replace(
+                '/return \[\s*\/\/\s*\];/',
+                "return [\n            'name' => fake()->words(2, true),\n        ];",
+                $files->get($factory),
+            ));
+        }
+
         $table = Str::snake(Str::pluralStudly($name));
         foreach ($files->glob(database_path("migrations/*_create_{$table}_table.php")) as $migration) {
             $files->put($migration, str_replace(
@@ -70,6 +81,37 @@ class MakeCrud extends Command
                 $files->get($migration),
             ));
         }
+    }
+
+    private function makeTest(Filesystem $files, string $name, string $slug): void
+    {
+        $path = base_path("tests/Feature/Crud/{$name}CrudTest.php");
+        $files->ensureDirectoryExists(dirname($path));
+        $files->put($path, <<<PHP
+        <?php
+
+        namespace Tests\\Feature\\Crud;
+
+        use Illuminate\\Foundation\\Testing\\RefreshDatabase;
+        use Tests\\Concerns\\CrudResourceTests;
+        use Tests\\TestCase;
+
+        class {$name}CrudTest extends TestCase
+        {
+            use CrudResourceTests, RefreshDatabase;
+
+            protected function crudSlug(): string
+            {
+                return '{$slug}';
+            }
+
+            protected function validPayload(): array
+            {
+                return ['name' => 'Ejemplo'];
+            }
+        }
+
+        PHP);
     }
 
     private function register(Filesystem $files, string $slug, string $name): void

@@ -24,18 +24,6 @@ class CrudTest extends TestCase
         return User::factory()->create()->assignRole(config('crud.admin_role'));
     }
 
-    public function test_guests_are_redirected_to_login(): void
-    {
-        $this->get('/users')->assertRedirect('/login');
-    }
-
-    public function test_user_without_permission_gets_403(): void
-    {
-        $this->actingAs(User::factory()->create()->assignRole('user'))
-            ->get('/users')
-            ->assertForbidden();
-    }
-
     public function test_index_returns_meta_rows_and_query_state(): void
     {
         $admin = $this->admin();
