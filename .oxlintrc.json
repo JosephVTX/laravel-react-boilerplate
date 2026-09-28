@@ -47,7 +47,8 @@
         {
             "files": ["scripts/**"],
             "rules": {
-                "no-console": "off"
+                "no-console": "off",
+                "unicorn/prefer-string-starts-ends-with": "off"
             }
         }
     ]
