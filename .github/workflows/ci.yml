@@ -9,18 +9,19 @@ jobs:
             - uses: shivammathur/setup-php@v2
               with:
                   { php-version: '8.3', extensions: 'mbstring, intl, pdo_sqlite, pdo_mysql', coverage: none }
+            - uses: pnpm/action-setup@v4
             - uses: actions/setup-node@v4
-              with: { node-version: 24, cache: npm }
+              with: { node-version: 24, cache: pnpm }
             - run: composer install --no-interaction --prefer-dist
             - run: cp .env.example .env && php artisan key:generate
-            - run: npm ci
-            - run: npm run types:generate
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm types:generate
             - name: Tipos generados al dia
               run: git diff --exit-code resources/js/types resources/js/routes resources/js/actions
             - run: vendor/bin/pint --test
-            - run: npm run check
+            - run: pnpm check
             - run: php artisan test
-            - run: npm run build
+            - run: pnpm build
 
     e2e:
         runs-on: ubuntu-latest
@@ -37,14 +38,15 @@ jobs:
             - uses: actions/checkout@v4
             - uses: shivammathur/setup-php@v2
               with: { php-version: '8.3', extensions: 'mbstring, intl, pdo_mysql', coverage: none }
+            - uses: pnpm/action-setup@v4
             - uses: actions/setup-node@v4
-              with: { node-version: 24, cache: npm }
+              with: { node-version: 24, cache: pnpm }
             - run: composer install --no-interaction --prefer-dist
             - run: cp .env.example .env && php artisan key:generate
-            - run: npm ci
-            - run: npx playwright install --with-deps chromium
-            - run: npm run build
-            - run: npx playwright test
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm exec playwright install --with-deps chromium
+            - run: pnpm build
+            - run: pnpm exec playwright test
               env:
                   DB_HOST: 127.0.0.1
                   DB_USERNAME: root

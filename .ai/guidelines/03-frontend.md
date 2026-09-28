@@ -33,5 +33,5 @@ Alias `@/` = `resources/js/`. Imports con `@/...`.
 
 ## Comandos
 
-`npm run dev` | `npm run build` | `npm run typecheck` (tsc) | `npm run lint` (**oxlint**, no eslint) | `npm run format` (oxfmt) | `npm run types:generate` | `npm run check`.
-Antes de terminar una tarea: `npm run check` y `php artisan test` deben pasar (y `npm run test:e2e` si tocaste flujos de UI).
+`pnpm dev` | `pnpm build` | `pnpm typecheck` (tsc) | `pnpm lint` (**oxlint**, no eslint) | `pnpm format` (oxfmt) | `pnpm types:generate` | `pnpm check`.
+Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y `pnpm test:e2e` si tocaste flujos de UI).

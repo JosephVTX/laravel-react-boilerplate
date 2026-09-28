@@ -45,7 +45,7 @@ class MakeCrud extends Command
         Siguientes pasos:
           1. Completar la migracion (database/migrations/*_create_{$slug}_table.php) y \$fillable en app/Models/{$name}.php
           2. Ajustar columns()/fields() en app/Crud/Definitions/{$name}Crud.php y las propiedades de app/Data/{$name}Data.php
-          3. php artisan migrate && php artisan crud:sync && npm run types:generate
+          3. php artisan migrate && php artisan crud:sync && pnpm types:generate
           4. Listo: /{$slug} ya tiene listado, busqueda, orden, paginacion, crear, editar y eliminar con permisos.
         TXT);
 

@@ -6,7 +6,7 @@ El servidor solo ejecuta **PHP-FPM + Nginx/Apache + MySQL + (Redis)**. El fronte
 
 ## Checklist de produccion
 
-1. Compilar en local/CI: `npm ci && npm run build` y subir `public/build` (o compilar en el servidor con swap y luego `rm -rf node_modules`).
+1. Compilar en local/CI: `pnpm install --frozen-lockfile && pnpm build` y subir `public/build` (o compilar en el servidor con swap y luego `rm -rf node_modules`).
 2. `.env` desde `.env.production.example` (`APP_DEBUG=false`, `LOG_LEVEL=warning`, `REDIS_CLIENT=phpredis`).
 3. `./deploy.sh` (composer `--no-dev --classmap-authoritative`, `migrate --force`, `crud:sync`, `optimize`, `queue:restart`).
 4. Permisos: `storage` y `bootstrap/cache` escribibles por el usuario de PHP-FPM.

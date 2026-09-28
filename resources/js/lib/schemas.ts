@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 /**
  * Schemas zod de respuestas JSON. `satisfies z.ZodType<T>` obliga a que coincidan con los tipos
- * generados desde PHP: si cambias una clase Data y no actualizas el schema, `npm run typecheck` falla.
+ * generados desde PHP: si cambias una clase Data y no actualizas el schema, `pnpm typecheck` falla.
  */
 export const userSchema = z.object({
     id: z.number(),

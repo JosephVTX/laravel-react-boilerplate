@@ -75,9 +75,9 @@ Consultalo (o `resources/js/types/index.ts`) para saber la forma de los datos: *
 
 1. Crea/edita la clase `Data` en `app/Data` (propiedades tipadas; arrays con docblock `@param string[] $x` o `@param Foo[] $x`).
 2. Devuelvela desde el controlador (`Inertia::render('pagina', ['prop' => SomeData::from(...)])`).
-3. Ejecuta `npm run types:generate` (typescript:transform + wayfinder:generate).
+3. Ejecuta `pnpm types:generate` (typescript:transform + wayfinder:generate).
 4. En React usa el tipo generado: `props: { prop: App.Data.SomeData }`. Nunca `any`, nunca redefinir el tipo a mano.
-5. `npm run check` debe pasar.
+5. `pnpm check` debe pasar.
 
 Reglas para clases `Data`:
 
@@ -89,7 +89,7 @@ Reglas para clases `Data`:
 ## Respuestas JSON (fuera de Inertia)
 
 `api.get(url, zodSchema)` (`lib/api.ts`). Cada schema en `lib/schemas.ts` termina con `satisfies z.ZodType<App.Data.X>`: si el tipo PHP cambia,
-`npm run typecheck` falla. Prefiere Inertia (props/formularios) y usa JSON solo para widgets que cargan datos sueltos (autocompletar, polling, etc.).
+`pnpm typecheck` falla. Prefiere Inertia (props/formularios) y usa JSON solo para widgets que cargan datos sueltos (autocompletar, polling, etc.).
 
 ## Zod
 
@@ -105,7 +105,7 @@ Reglas para clases `Data`:
 ```
 php artisan make:crud Product          # modelo+migracion+factory, ProductCrud, ProductData, registro en config/crud.php
 # editar migracion + $fillable, columns()/fields() de ProductCrud, propiedades de ProductData
-php artisan migrate && php artisan crud:sync && npm run types:generate
+php artisan migrate && php artisan crud:sync && pnpm types:generate
 ```
 
 Resultado: `/products` con listado, busqueda, orden, paginacion, crear/editar/borrar, permisos `products.*` y entrada en el menu. Nada de React.
@@ -131,7 +131,7 @@ Resultado: `/products` con listado, busqueda, orden, paginacion, crear/editar/bo
 - Controladores delgados (invocables o resource) -> `Inertia::render('carpeta/pagina', [props Data])`. Logica en clases de accion/servicio en `app/Actions` o `app/Services` reutilizables.
 - Validacion: preferir clase `Data` de entrada con atributos (tipa tambien el formulario); si no, `FormRequest`.
 - Listados propios: usa `Spatie\QueryBuilder\QueryBuilder` + `App\Support\Paginated::from()` (mismo contrato `Paginated<T>`); considera extender `CrudDefinition` antes.
-- Rutas nuevas: en `routes/web.php`, con nombre. Ejecuta `npm run types:generate` para que Wayfinder las exponga.
+- Rutas nuevas: en `routes/web.php`, con nombre. Ejecuta `pnpm types:generate` para que Wayfinder las exponga.
 - Flash: `->with('success'|'error', 'mensaje')` (el `Toaster` global lo muestra).
 - Errores 403/404/500/503 se muestran con `pages/error.tsx` automaticamente.
 
@@ -179,8 +179,8 @@ Alias `@/` = `resources/js/`. Imports con `@/...`.
 
 ## Comandos
 
-`npm run dev` | `npm run build` | `npm run typecheck` (tsc) | `npm run lint` (**oxlint**, no eslint) | `npm run format` (oxfmt) | `npm run types:generate` | `npm run check`.
-Antes de terminar una tarea: `npm run check` y `php artisan test` deben pasar (y `npm run test:e2e` si tocaste flujos de UI).
+`pnpm dev` | `pnpm build` | `pnpm typecheck` (tsc) | `pnpm lint` (**oxlint**, no eslint) | `pnpm format` (oxfmt) | `pnpm types:generate` | `pnpm check`.
+Antes de terminar una tarea: `pnpm check` y `php artisan test` deben pasar (y `pnpm test:e2e` si tocaste flujos de UI).
 
 === .ai/04-bajos-recursos rules ===
 
@@ -193,9 +193,9 @@ Todo cambio debe respetar que esto corre en VPS de 512 MB - 1 GB de RAM y 1 vCPU
 - **Colas**: un solo worker con limites (`queue:work --max-jobs=500 --max-time=3600 --memory=128`). Jobs pequenos; nada de cargar colecciones enormes en memoria (`chunk`, `cursor`, `lazy`).
 - **Consultas**: paginar siempre, indexar columnas usadas en `where`/`orderBy`/`search`, precargar relaciones (`with()`), evitar `count()` innecesarios. En local `Model::shouldBeStrict()` detecta N+1 y atributos inexistentes.
 - **Cache**: `php artisan optimize` en cada deploy (config, rutas, vistas, eventos). Cachea con `Cache::remember` lo caro y estable (permisos ya se cachean por Spatie).
-- **Frontend**: paginas lazy, iconos registrados (tree-shaking), sin dependencias pesadas, imagenes optimizadas. Vigila el tamano de `npm run build`.
+- **Frontend**: paginas lazy, iconos registrados (tree-shaking), sin dependencias pesadas, imagenes optimizadas. Vigila el tamano de `pnpm build`.
 - **Logs**: `LOG_LEVEL=warning` en produccion; `LOG_STACK=daily` con rotacion corta si el disco es chico.
-- **Dependencias**: antes de agregar un paquete (composer/npm) verifica que no exista ya una pieza generica en el proyecto y evalua su costo en RAM/bundle.
+- **Dependencias**: antes de agregar un paquete (composer/pnpm) verifica que no exista ya una pieza generica en el proyecto y evalua su costo en RAM/bundle.
 - Despliegue: `docs/DEPLOY.md` y `deploy.sh`.
 
 === foundation rules ===
@@ -230,7 +230,7 @@ Before relying on a package's API, confirm its installed version:
 
 ## Frontend Bundling
 
-- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `pnpm run build`, `pnpm run dev`, or `composer run dev`. Ask them.
 
 ## Documentation Files
 
@@ -362,7 +362,7 @@ Before relying on a package's API, confirm its installed version:
 
 ## Vite Error
 
-- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `pnpm run build` or ask the user to run `pnpm run dev` or `composer run dev`.
 
 === wayfinder/core rules ===
 

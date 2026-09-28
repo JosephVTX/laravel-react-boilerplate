@@ -19,9 +19,9 @@ Consultalo (o `resources/js/types/index.ts`) para saber la forma de los datos: *
 
 1. Crea/edita la clase `Data` en `app/Data` (propiedades tipadas; arrays con docblock `@param string[] $x` o `@param Foo[] $x`).
 2. Devuelvela desde el controlador (`Inertia::render('pagina', ['prop' => SomeData::from(...)])`).
-3. Ejecuta `npm run types:generate` (typescript:transform + wayfinder:generate).
+3. Ejecuta `pnpm types:generate` (typescript:transform + wayfinder:generate).
 4. En React usa el tipo generado: `props: { prop: App.Data.SomeData }`. Nunca `any`, nunca redefinir el tipo a mano.
-5. `npm run check` debe pasar.
+5. `pnpm check` debe pasar.
 
 Reglas para clases `Data`:
 
@@ -33,7 +33,7 @@ Reglas para clases `Data`:
 ## Respuestas JSON (fuera de Inertia)
 
 `api.get(url, zodSchema)` (`lib/api.ts`). Cada schema en `lib/schemas.ts` termina con `satisfies z.ZodType<App.Data.X>`: si el tipo PHP cambia,
-`npm run typecheck` falla. Prefiere Inertia (props/formularios) y usa JSON solo para widgets que cargan datos sueltos (autocompletar, polling, etc.).
+`pnpm typecheck` falla. Prefiere Inertia (props/formularios) y usa JSON solo para widgets que cargan datos sueltos (autocompletar, polling, etc.).
 
 ## Zod
 

@@ -49,9 +49,9 @@
             "@php artisan key:generate",
             "@php artisan migrate --force",
             "@php artisan crud:sync",
-            "npm install --ignore-scripts",
-            "npm run types:generate",
-            "npm run build"
+            "pnpm install",
+            "pnpm types:generate",
+            "pnpm build"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -82,10 +82,10 @@
         "check": [
             "@php vendor/bin/pint --test",
             "@php artisan test",
-            "npm run check"
+            "pnpm check"
         ],
         "types": [
-            "npm run types:generate"
+            "pnpm types:generate"
         ]
     },
     "extra": {

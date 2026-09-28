@@ -9,13 +9,13 @@ Laravel Wayfinder · spatie/laravel-permission · spatie/laravel-query-builder �
 ## Inicio rapido (Laragon: Apache + MySQL + Redis)
 
 ```bash
-composer setup                 # instala, .env, key, migra, permisos, npm, tipos y build
+composer setup                 # instala, .env, key, migra, permisos, pnpm, tipos y build
 # crear la BD `laravel_boilerplate` en MySQL antes (usuario root sin clave por defecto en Laragon)
 php artisan db:seed            # admin@example.com / password  (+ 20 usuarios de prueba)
-composer dev                   # servidor + vite (HMR)   |   o usa el vhost de Laragon + `npm run dev`
+composer dev                   # servidor + vite (HMR)   |   o usa el vhost de Laragon + `pnpm dev`
 ```
 
-Comandos utiles: `npm run types:generate` · `npm run check` (tsc + oxlint) · `php artisan test` · `composer check` (Pint + PHPUnit + tsc + oxlint) · `npm run test:e2e` (Playwright, BD `laravel_boilerplate_e2e` aislada; primero `npx playwright install chromium`).
+Comandos utiles: `pnpm types:generate` · `pnpm check` (tsc + oxlint) · `php artisan test` · `composer check` (Pint + PHPUnit + tsc + oxlint) · `pnpm test:e2e` (Playwright, BD `laravel_boilerplate_e2e` aislada; primero `pnpm exec playwright install chromium`).
 
 ## La idea: tipado end-to-end (estilo tRPC)
 
@@ -31,7 +31,7 @@ El frontend conoce la forma de **todos** los datos, props compartidas, enums y r
 ```bash
 php artisan make:crud Product
 # completar migracion, $fillable, columns()/fields() en app/Crud/Definitions/ProductCrud.php y app/Data/ProductData.php
-php artisan migrate && php artisan crud:sync && npm run types:generate
+php artisan migrate && php artisan crud:sync && pnpm types:generate
 ```
 
 `/products` ya tiene: listado paginado, busqueda, orden, crear/editar/eliminar en modal, validacion (cliente y servidor), permisos Spatie

@@ -9,7 +9,7 @@ git pull --ff-only
 composer install --no-dev --optimize-autoloader --no-interaction --classmap-authoritative
 
 # Solo si compilas en el servidor (necesita ~1GB de RAM/swap temporal):
-# npm ci && npm run build && rm -rf node_modules
+# pnpm install --frozen-lockfile && pnpm build && rm -rf node_modules
 
 php artisan migrate --force
 php artisan crud:sync

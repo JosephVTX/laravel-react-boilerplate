@@ -5,7 +5,7 @@
 ```
 php artisan make:crud Product          # modelo+migracion+factory, ProductCrud, ProductData, registro en config/crud.php
 # editar migracion + $fillable, columns()/fields() de ProductCrud, propiedades de ProductData
-php artisan migrate && php artisan crud:sync && npm run types:generate
+php artisan migrate && php artisan crud:sync && pnpm types:generate
 ```
 
 Resultado: `/products` con listado, busqueda, orden, paginacion, crear/editar/borrar, permisos `products.*` y entrada en el menu. Nada de React.
@@ -31,7 +31,7 @@ Resultado: `/products` con listado, busqueda, orden, paginacion, crear/editar/bo
 - Controladores delgados (invocables o resource) -> `Inertia::render('carpeta/pagina', [props Data])`. Logica en clases de accion/servicio en `app/Actions` o `app/Services` reutilizables.
 - Validacion: preferir clase `Data` de entrada con atributos (tipa tambien el formulario); si no, `FormRequest`.
 - Listados propios: usa `Spatie\QueryBuilder\QueryBuilder` + `App\Support\Paginated::from()` (mismo contrato `Paginated<T>`); considera extender `CrudDefinition` antes.
-- Rutas nuevas: en `routes/web.php`, con nombre. Ejecuta `npm run types:generate` para que Wayfinder las exponga.
+- Rutas nuevas: en `routes/web.php`, con nombre. Ejecuta `pnpm types:generate` para que Wayfinder las exponga.
 - Flash: `->with('success'|'error', 'mensaje')` (el `Toaster` global lo muestra).
 - Errores 403/404/500/503 se muestran con `pages/error.tsx` automaticamente.
 
